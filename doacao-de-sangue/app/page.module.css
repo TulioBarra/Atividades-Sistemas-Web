@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5; /* Cor de fundo clara */
+  padding: 20px;
+}
+
+/* Estilo para o título */
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0070f3; /* Azul */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Estilo para a descrição */
+.description {
+  font-size: 1.2rem;
+  color: #333; /* Cor do texto */
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Estilo para o menu de navegação */
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Estilo para os links de navegação */
+.navLink {
+  font-size: 1rem;
+  padding: 12px 24px;
+  color: white;
+  background-color: #0070f3; /* Azul */
+  text-decoration: none;
+  border-radius: 8px; /* Raio da borda */
+  transition: background-color 0.3s ease;
+}
+
+.navLink:hover {
+  background-color: #005bb5; /* Azul mais escuro ao passar o mouse */
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .navLink {
+    width: 100%;
+    text-align: center;
+  }
+}

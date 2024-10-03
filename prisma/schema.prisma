@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+
+model Estado {
+  id    Int    @id @default(autoincrement())
+  nome  String
+  sigla String @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+
+  cidades    Cidade[]
+
+  @@map("estados")
+}
+
+model Cidade {
+  id   Int    @id @default(autoincrement())
+  nome String
+
+  // Chave estrangeira: estados->id
+  // -- Atributo correspondente à chave estrangeira
+  estado_id Int
+  // -- Relação entre modelos/entidades
+  estado    Estado @relation(fields: [estado_id], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  pessoas    Pessoa[]
+  locais     Locais[]
+
+  @@map("cidades")
+}
+
+model Pessoa {
+  id   Int    @id @default(autoincrement())
+  nome        String 
+  rua         String  
+  numero      String
+  complemento String
+  rg          String
+  cidade_id   Int
+  cidade     Cidade @relation(fields: [cidade_id], references: [id]) 
+  tipo_id     Int
+  tipo       Tipo @relation(fields: [tipo_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+ 
+ doacoes Doacao[]
+
+  @@map(name: "pessoas")
+}
+
+model Tipo{
+  id   Int    @id @default(autoincrement())
+  tipo  String 
+  fator String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  pessoas    Pessoa[]
+
+@@map("tipos")
+}
+
+
+model Locais{
+  id   Int    @id @default(autoincrement())
+  nome        String 
+  rua         String
+  complemento String
+  cidade_id   Int
+  cidade     Cidade @relation(fields: [cidade_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  doacoes Doacao[]
+ 
+
+@@map("locais")
+}
+
+model Doacao{
+  id   Int    @id @default(autoincrement())
+  pessoa_id  Int
+  pessoa     Pessoa @relation(fields: [pessoa_id], references: [id])
+  local_id   Int
+  local       Locais @relation(fields: [local_id], references: [id])
+  data        DateTime @default(now())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("doacoes")
+}

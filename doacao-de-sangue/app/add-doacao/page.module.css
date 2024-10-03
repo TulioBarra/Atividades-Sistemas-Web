@@ -1,0 +1,49 @@
+.main {
+  padding: 20px;
+  text-align: center;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 10px;
+  margin: 5px 0;
+  width: 300px; /* Ajuste conforme necessário */
+}
+
+.button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.statusMessage {
+  margin-top: 10px;
+  color: red; /* Ou use uma cor que combine com o design */
+}
+
+.backLink {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: underline;
+  color: blue; /* Ajuste conforme necessário */
+}
